@@ -1,0 +1,6 @@
+-iquote
+lib/include
+-iquote
+include
+-Wall
+-Wextra
