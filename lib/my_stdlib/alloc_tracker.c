@@ -1,3 +1,10 @@
+/*
+** EPITECH PROJECT, 2024
+** alloc tracker
+** File description:
+** alloc tracker
+*/
+
 #include "../include/my_stdlib.h"
 
 alloc_tracker new_tracker(void)
@@ -22,7 +29,7 @@ void tracker_remove(alloc_tracker *tracker, chunk_metadata *data)
 {
     chunk_metadata *prev = NULL;
     chunk_metadata *current = tracker->used;
-    
+
     while (current != data) {
         prev = current;
         current = current->next;

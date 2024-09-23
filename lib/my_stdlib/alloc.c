@@ -1,5 +1,11 @@
+/*
+** EPITECH PROJECT, 2024
+** alloc
+** File description:
+** allocator
+*/
+
 #include "../include/my_stdlib.h"
-#include "../include/my_string.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -7,10 +13,22 @@ void *my_malloc(size_t size, alloc_tracker *tracker)
 {
     void *ptr = malloc(size + CHUNK_METADATA_SIZE);
 
+    if (ptr == NULL)
+        return NULL;
     ((chunk_metadata *)ptr)->size = size;
     ((chunk_metadata *)ptr)->next = NULL;
     tracker_add(tracker, ptr);
     return (char *)ptr + CHUNK_METADATA_SIZE;
+}
+
+void *my_calloc(size_t nmemb, size_t size, alloc_tracker *tracker)
+{
+    void *ptr = my_malloc(size * nmemb, tracker);
+
+    if (ptr == NULL)
+        return NULL;
+    memset(ptr, 0, size * nmemb);
+    return ptr;
 }
 
 void *my_realloc(void *ptr, size_t size, alloc_tracker *tracker)
@@ -27,5 +45,6 @@ void *my_realloc(void *ptr, size_t size, alloc_tracker *tracker)
     if (new_ptr == NULL)
         return NULL;
     memcpy(new_ptr, ptr, old_size <= size ? old_size : size);
+    my_free(ptr, tracker);
     return new_ptr;
 }
