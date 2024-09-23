@@ -1,16 +1,12 @@
 #include "../include/my_string.h"
 #include <stdio.h>
 
-void *my_memcpy(void *dest, void *src, size_t size)
+void *my_memcpy(void *dest, void const *src, size_t size)
 {
-    char *source = src;
-    char *destination = dest;
-
     if (src == NULL || dest == NULL || size == 0)
         return NULL;
     for (size_t i = 0; i < size; ++i) {
-        char cs = source[i];
-        destination[i] = cs;
+        ((char *)dest)[i] = ((char const *)src)[i];
     }
     return dest;
 }
