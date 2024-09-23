@@ -4,10 +4,14 @@ STD_FUNCS = ./my_stdlib/free.c \
 
 STRINGS_FUNCS = ./my_string/my_memcpy.c
 
-SRC = $(STRINGS_FUNCS) \
-	   	$(STD_FUNCS)
+VEC_FUNCS = ./my_vector/vector.c \
+						./my_vector/iterator.c
 
-CFLAGS = -Wall -Wextra 
+SRC = $(STRINGS_FUNCS) \
+	   	$(STD_FUNCS) \
+			$(VEC_FUNCS)
+
+CFLAGS = -Wall -Wextra
 CPPFLAGS = -iquote .
 OBJ = $(SRC:.c=.o)
 NAME = libmy.a

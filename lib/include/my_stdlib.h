@@ -1,3 +1,10 @@
+/*
+** EPITECH PROJECT, 2024
+** header
+** File description:
+** header
+*/
+
 #pragma once
 
 #include <stdint.h>
@@ -17,6 +24,7 @@ typedef struct {
 
 void *my_malloc(size_t size, alloc_tracker *tracker);
 void *my_realloc(void *ptr, size_t size, alloc_tracker *tracker);
+void *my_calloc(size_t nmemb, size_t size, alloc_tracker *tracker);
 void my_free(void *ptr, alloc_tracker *tracker);
 void my_free_all(alloc_tracker *tracker);
 
