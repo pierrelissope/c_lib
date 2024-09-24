@@ -1,15 +1,4 @@
-STD_FUNCS = ./my_stdlib/free.c \
-						./my_stdlib/alloc.c \
-						./my_stdlib/alloc_tracker.c
-
-STRINGS_FUNCS = ./my_string/my_memcpy.c
-
-VEC_FUNCS = ./my_vector/vector.c \
-						./my_vector/iterator.c
-
-SRC = $(STRINGS_FUNCS) \
-	   	$(STD_FUNCS) \
-			$(VEC_FUNCS)
+SRC = $(shell find . -name "*.c")
 
 CFLAGS = -Wall -Wextra
 CPPFLAGS = -iquote .
